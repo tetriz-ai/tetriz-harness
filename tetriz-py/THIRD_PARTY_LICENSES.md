@@ -17,7 +17,7 @@ Installed by `uv sync --no-dev`, and so present in the image.
 | annotated-doc | 0.0.5 | MIT | always |
 | annotated-types | 0.8.0 | MIT | always |
 | anyio | 4.15.1 | MIT | always |
-| certifi | 2026.7.22 | MPL-2.0 | always |
+| certifi | 2026.10.19 | MPL-2.0 | always |
 | cffi | 2.1.1 | MIT-0 | CPython |
 | charset-normalizer | 3.5.2 | MIT | always |
 | click | 8.5.0 | BSD-3-Clause | always |
@@ -54,7 +54,7 @@ Installed by `uv sync --no-dev`, and so present in the image.
 | watchfiles | 1.3.0 | MIT | always |
 | websockets | 16.1.1 | BSD-3-Clause | always |
 
-The image also holds uv 0.10.4 (MIT OR Apache-2.0), which the Dockerfile installs with pip to build the
+The image also holds uv 0.13.5 (MIT OR Apache-2.0), which the Dockerfile installs with pip to build the
 virtualenv.
 
 ## Optional `ml` extra

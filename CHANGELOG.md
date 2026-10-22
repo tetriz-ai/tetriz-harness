@@ -11,6 +11,12 @@ All notable changes to this project are documented in this file. The format is b
 - The README leads with a narrated scan-to-rollout demo: identify a broken rule pattern,
   verify a reviewed fix, publish it to a selected team and inspect delivery status.
 
+### Security
+
+- Builds use Go 1.26.10 and `tetriz-py` locks certifi 2026.10.19, both of which distrust the
+  compromised eMudhra (emSign) intermediate CA keys. The server image now runs on
+  `distroless/static-debian13`, and the `tetriz-py` image installs uv 0.13.5.
+
 ## [0.1.0] - 2026-10-15
 
 ### Added

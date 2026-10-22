@@ -8,7 +8,7 @@ FROM python:3.11-slim@sha256:e88e9763f943ec1834f992a4b51e0f24500486803e8bc534e57
 WORKDIR /app
 
 # Pin uv for reproducible dependency resolution.
-ARG UV_VERSION=0.10.4
+ARG UV_VERSION=0.13.5
 RUN pip install --no-cache-dir "uv==${UV_VERSION}"
 
 # Resolve the locked dependency set first for layer caching. --no-install-project installs

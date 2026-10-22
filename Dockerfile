@@ -11,8 +11,8 @@ COPY web/ web/
 RUN pnpm install --offline --frozen-lockfile --filter harness-control-plane-web... \
  && pnpm --filter harness-control-plane-web... build
 
-# golang:1.26-alpine
-FROM golang:1.26-alpine@sha256:3082400e369fa24d5fc60bca20edab3f6d604e0c5a690ec66b295eff4dd87ade AS build
+# golang:1.26.10-alpine
+FROM golang:1.26.10-alpine@sha256:5cb67f19c5e7994dcb80c074f7cfca8aeeada45bbdca035f73df269cefdcce61 AS build
 WORKDIR /src
 COPY go.mod go.sum ./
 RUN go mod download
@@ -22,8 +22,8 @@ COPY --from=web /src/web/dist ./web/dist
 RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/harnessctl-server ./cmd/harnessctl-server \
  && mkdir -p /out/data/blobs
 
-# gcr.io/distroless/static-debian12:nonroot
-FROM gcr.io/distroless/static-debian12:nonroot@sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab
+# gcr.io/distroless/static-debian13:nonroot
+FROM gcr.io/distroless/static-debian13:nonroot@sha256:d62067879de890a1def9da0e7766b7d20810a5e5555cef8506b752437d7a3e88
 COPY --from=build /out/harnessctl-server /usr/local/bin/harnessctl-server
 COPY --from=build --chown=nonroot:nonroot /out/data /data
 # The binary links Go modules and embeds the admin UI bundle, so the image
